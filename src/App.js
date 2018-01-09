@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import Header from './components/header';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        Prace Higher Order Comps
+        <Header />
       </div>
     );
   }
 }
 
-function mapStateToProps({posts}) {
-  return {posts}
-}
 
-export default connect(mapStateToProps)(App)
+export default App;
 
 

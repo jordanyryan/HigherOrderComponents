@@ -10,9 +10,18 @@ import promise from 'redux-promise';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
+import Resources from './components/resources';
+
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route path="/resources" component={Resources}/>
+          <Route path="/" component={App}/>
+        </Switch>
+      </div>
+    </BrowserRouter>
   </Provider>
   ,
   document.getElementById('root')
