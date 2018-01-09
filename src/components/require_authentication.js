@@ -4,21 +4,20 @@ import { connect } from 'react-redux';
 export default function(ComposedComponent) {
   class Authentication extends Component {
     componentWillMount() {
-      this.validate();
+      this.validate(this.props);
     }
 
-    componentDidUpdate() {
-      this.validate();
+    componentWillUpdate(nextProps) {
+      this.validate(nextProps)
     }
 
-    validate() {
-      if (!this.props.authenticated) {
-        this.props.history.push('/');
+    validate(someProps) {
+      if (!someProps.authenticated) {
+        someProps.history.push('/');
       }
     }
 
     render() {
-      console.log(this.context);
       return <ComposedComponent {...this.props}/>
     }
   }
